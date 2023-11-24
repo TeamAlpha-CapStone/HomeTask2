@@ -3,7 +3,7 @@ This repository contains solutions to Home Task 2 of Java by Angel Mary(7218965)
 
 If you are running the Project in Eclipse:
 
-Download the JavaHomeTask2 Zipfile and Extract it(preferably inside an Empty Folder).
+Download the JavaHomeTask2 Zipfile and Extract it.
 
 Now open your Eclipse IDE and import the Extracted JavaHomeTask2 file and Click Run button.
 
@@ -17,6 +17,8 @@ c,d) Managing the log files - create, move, delete, archive.  Log files should b
 devided into classes – functionality of the system, functionality of a 
 charging station, functionality of the energy management system. & Use byte and 
 character streams for simulation of the data exchange in the system                  -->   Farhaad Sheikh Mohammed(7219055), Swathi Chandrashekaraiah(7218877)
+
+Note: After you have executed the program you find the log files inside StationLogFiles folder(which will automatically be created on the same folder, where the Main.java file is present)
 
 IF YOU ARE RUNNING THE PROJECT IN ANY OTHER IDE:
 
