@@ -165,5 +165,43 @@ public class Main {
         ChargingStation station1 = new ChargingStation(1, 1, 2,f1); // Create charging stations
         ChargingStation station2 = new ChargingStation(2, 7, 2,f2);
 
+        ChargingStation[] stations = {station1, station2}; // Create an array of charging stations
+
+        // Create cars with different charging durations and locations
+        Car car1 = new Car("car1", 1, 3, stations);
+        Car car2 = new Car("car2", 2, 2, stations);
+        Car car3 = new Car("car3", 3, 4, stations);
+        Car car4 = new Car("car4", 4, 1, stations);
+        Car car5 = new Car("car5", 5,3, stations);
+        Car car6 = new Car("car6",6, 2, stations);
+        Car car7 = new Car("car7",7, 4, stations);
+        Car car8 = new Car("car8",8, 1, stations);
+
+        // Start threads for each car
+        car1.start();
+        car2.start();
+        car3.start();
+        car4.start();
+        car5.start();
+        car6.start();
+        car7.start();
+        car8.start();
+
+        // Continuously check if any car threads are active
+        while (car1.isAlive() || car2.isAlive() || car3.isAlive() || car4.isAlive()||car5.isAlive() || car6.isAlive() || car7.isAlive() || car8.isAlive()) {
+            try {
+                Thread.sleep(1000); // Sleep for a short duration before rechecking
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+      
+        // f1.flush();
+        // f2.flush();
+        f1.close();
+        f2.close();
+        System.out.println("All cars have finished their charging. Program terminated.");
+        System.out.println("=========================================================================================================");
     }
 }
