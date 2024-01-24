@@ -75,7 +75,55 @@ class ChargingStation {
         }
     }
 }
+class Car extends Thread {
+    private String ID;
+    private int location;
+    private int chargingDuration;
+    private ChargingStation[] stations;
+    private ChargingStation nearestStation;
 
+    public Car(String ID, int location, int chargingDuration, ChargingStation[] stations) {
+        this.ID = ID;
+        this.location = location;
+        this.chargingDuration = chargingDuration;
+        this.stations = stations;
+        this.nearestStation = findNearestStation();
+    }
+
+    public ChargingStation findNearestStation() {
+        int minDistance = Integer.MAX_VALUE;
+        ChargingStation nearest = null;
+
+        for (ChargingStation station : stations) {
+            int distance = Math.abs(station.location - this.location);
+            if (distance < minDistance) {
+                minDistance = distance;
+                nearest = station;
+            }
+        }
+        //System.out.println("Nearest Station for " + this.ID() + " is at location " + nearest.location);
+        return nearest;
+    }
+
+    public String ID() {
+        return ID;
+    }
+
+    public int chargingDuration() {
+        return chargingDuration;
+    }
+
+    public void run() {
+        if (nearestStation.bookslot(this, chargingDuration)) {
+            try {
+                Thread.sleep(chargingDuration * 1000); // Simulating charging duration in seconds
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            nearestStation.releaseSlot(this);
+
+        }
+    }}
 public class Main {
 
     public static void main(String[] args) throws IOException {
