@@ -17,6 +17,7 @@ class Admin
    }
 
 }
+
 class ChargingStation {
     private int id;
     int location;
@@ -87,6 +88,7 @@ class ChargingStation {
         }
     }
 }
+
 class Car extends Thread {
     private String ID;
     private int location;
@@ -133,9 +135,10 @@ class Car extends Thread {
                 e.printStackTrace();
             }
             nearestStation.releaseSlot(this);
-
         }
-    }}
+    }
+}
+
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -173,9 +176,14 @@ public class Main {
         FileWriter f1=new FileWriter(s1file.getAbsolutePath());
         FileWriter f2 = new FileWriter(s2file.getAbsolutePath());
         System.out.println(s1file.getAbsolutePath());
+        
 
         ChargingStation station1 = new ChargingStation(1, 1, 2,f1); // Create charging stations
         ChargingStation station2 = new ChargingStation(2, 7, 2,f2);
+
+        Admin as1=new Admin(001,"admin1",station1);
+        Admin as2=new Admin(002,"admin2",station2);
+    
 
         ChargingStation[] stations = {station1, station2}; // Create an array of charging stations
 
@@ -215,89 +223,90 @@ public class Main {
         f2.close();
         System.out.println("All cars have finished their charging. Program terminated.");
         System.out.println("=========================================================================================================");
-       //System.out.println("All cars have finished their charging. Program terminated.");
-       Scanner sc=new Scanner(System.in);
-       System.out.print("Would You like to View log files(yes/no)");
-       if("yes".equals(sc.next()))
-       {
-           System.out.print("Would you like to view Station log files(yes/no)");
-            if("yes".equals(sc.next()))
-            {
-               System.out.print("Station1 or Station2:");
-               String sname=sc.next();
-               if("Station1".equals(sname))
-               {
-                   System.out.print("Enter your ID:");
-                   int id=sc.nextInt();
-                   System.out.print("Enter your password:");
-                   String pass=sc.next();
-                   if(id==as1.ID && pass.equals(as1.pass))
-                   {
-                       System.out.println("***********************");
-                       System.out.println("File Name: "+s1file.getName()+"\n"+"File Length: "+s1file.length()+"\n"+"File Last Modified: "+s1file.lastModified()+"\n");
-                       Scanner myreader=new Scanner(s1file);
-                       while(myreader.hasNext())
-                       {
-                           System.out.println(myreader.nextLine());
-                       }
-                       myreader.close();
-                       System.out.println("***********************");
-                       System.out.println("Would u like to delete the file(yes/no):");
-                       if("yes".equals(sc.next()))
-                       {
-                           s1file.delete();
-                       }
-                       else{
-                           System.out.println("Thank u then.----End of Program----");
-                       }
-                       
-                   }
-                   else{
-                       System.out.println("Wrong credentials, Get Lost.----End of Program----");
-                   }
-               }
-               else if("Station1".equals(sname))
-               {
-                   System.out.print("Enter your ID:");
-                   int id=sc.nextInt();
-                   System.out.print("Enter your password:");
-                   String pass=sc.next();
-                   if(id==as2.ID && pass.equals(as2.pass))
-                   {
-                       System.out.println("***********************");
-                       System.out.println("File Name: "+s2file.getName()+"\n"+"File Length: "+s2file.length()+"\n"+"File Last Modified: "+s2file.lastModified()+"\n");
-                       Scanner myreader=new Scanner(s2file);
-                       while(myreader.hasNext())
-                       {
-                           System.out.println(myreader.nextLine());
-                       }
-                       System.out.println("***********************");
-                       myreader.close();
-                       System.out.println("Would u like to delete the file(yes/no):");
-                       if("yes".equals(sc.next()))
-                       {
-                           s2file.delete();
-                       }
-                       else{
-                           System.out.println("Thank u then.----End of Program----");
-                       }
-                       
-                   }
-                   else{
-                       System.out.println("Wrong credentials, Get Lost.----End of Program----");
-                   }
-               }
-               else{
-                   System.out.println("Nothing exists like that. ----End of Program----");
-               }
-            }
-             else{
-               System.out.println("Then y did u enter \"yes\" before, Don't waste my time. ----End of Program----");
-       }
-       }
-       else{
-           System.out.println("Then thank you. ----End of Program----");
-       }
-       
-   }
+
+        //System.out.println("All cars have finished their charging. Program terminated.");
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Would You like to View log files(yes/no)");
+        if("yes".equals(sc.next()))
+        {
+            System.out.print("Would you like to view Station log files(yes/no)");
+             if("yes".equals(sc.next()))
+             {
+                System.out.print("Station1 or Station2:");
+                String sname=sc.next();
+                if("Station1".equals(sname))
+                {
+                    System.out.print("Enter your ID:");
+                    int id=sc.nextInt();
+                    System.out.print("Enter your password:");
+                    String pass=sc.next();
+                    if(id==as1.ID && pass.equals(as1.pass))
+                    {
+                        System.out.println("*******************************************************************");
+                        System.out.println("File Name: "+s1file.getName()+"\n"+"File Length: "+s1file.length()+"\n"+"File Last Modified: "+s1file.lastModified()+"\n");
+                        Scanner myreader=new Scanner(s1file);
+                        while(myreader.hasNext())
+                        {
+                            System.out.println(myreader.nextLine());
+                        }
+                        myreader.close();
+                        System.out.println("*******************************************************************");
+                        System.out.println("Would u like to delete the file(yes/no):");
+                        if("yes".equals(sc.next()))
+                        {
+                            s1file.delete();
+                        }
+                        else{
+                            System.out.println("Thank u then.----End of Program----");
+                        }
+                        
+                    }
+                    else{
+                        System.out.println("Wrong credentials, Get Lost.----End of Program----");
+                    }
+                }
+                else if("Station1".equals(sname))
+                {
+                    System.out.print("Enter your ID:");
+                    int id=sc.nextInt();
+                    System.out.print("Enter your password:");
+                    String pass=sc.next();
+                    if(id==as2.ID && pass.equals(as2.pass))
+                    {
+                        System.out.println("*******************************************************************");
+                        System.out.println("File Name: "+s2file.getName()+"\n"+"File Length: "+s2file.length()+"\n"+"File Last Modified: "+s2file.lastModified()+"\n");
+                        Scanner myreader=new Scanner(s2file);
+                        while(myreader.hasNext())
+                        {
+                            System.out.println(myreader.nextLine());
+                        }
+                        System.out.println("*******************************************************************");
+                        myreader.close();
+                        System.out.println("Would u like to delete the file(yes/no):");
+                        if("yes".equals(sc.next()))
+                        {
+                            s2file.delete();
+                        }
+                        else{
+                            System.out.println("Thank u then.----End of Program----");
+                        }
+                        
+                    }
+                    else{
+                        System.out.println("Wrong credentials, Get Lost.----End of Program----");
+                    }
+                }
+                else{
+                    System.out.println("Nothing exists like that. ----End of Program----");
+                }
+             }
+              else{
+                System.out.println("Then y did u enter \"yes\" before, Don't waste my time. ----End of Program----");
+        }
+        }
+        else{
+            System.out.println("Then thank you. ----End of Program----");
+        }
+        
+    }
 }
