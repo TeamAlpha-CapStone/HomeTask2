@@ -215,5 +215,30 @@ public class Main {
         f2.close();
         System.out.println("All cars have finished their charging. Program terminated.");
         System.out.println("=========================================================================================================");
+        Admin as1=new Admin(001,"admin1",station1);
+        Admin as2=new Admin(002,"admin2",station2);
+
+        System.out.print("Station1 or Station2:");
+        Scanner sc=new Scanner(System.in);
+        String sname=sc.next();
+                if("Station1".equals(sname))
+                {
+                    System.out.print("Enter your ID:");
+                    int id=sc.nextInt();
+                    System.out.print("Enter your password:");
+                    String pass=sc.next();
+                    if(id==as1.ID && pass.equals(as1.pass))
+                    {
+                        System.out.println("***********************");
+                        System.out.println("File Name: "+s1file.getName()+"\n"+"File Length: "+s1file.length()+"\n"+"File Last Modified: "+s1file.lastModified()+"\n");
+                        Scanner myreader=new Scanner(s1file);
+                        while(myreader.hasNext())
+                        {
+                            System.out.println(myreader.nextLine());
+                        }
+                        myreader.close();
+                    }
+                }
+
     }
 }
