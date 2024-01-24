@@ -4,7 +4,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+class Admin
+{
+    int ID;
+    String pass;
+    ChargingStation cs;
+   public Admin(int ID,String pass, ChargingStation cs)
+   {
+    this.ID=ID;
+    this.pass=pass;
+    this.cs=cs;
+   }
 
+}
 class ChargingStation {
     private int id;
     int location;
