@@ -265,7 +265,7 @@ public class Main {
                         System.out.println("Wrong credentials, Get Lost.----End of Program----");
                     }
                 }
-                else if("Station1".equals(sname))
+                else if("Station2".equals(sname))
                 {
                     System.out.print("Enter your ID:");
                     int id=sc.nextInt();
